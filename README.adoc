@@ -1,0 +1,61 @@
+= Installation de Asciidoc et Deck.js
+
+.Installer Ruby
+Pour ceux sous windows, le plus simple est d'installer la version 2.1.6 de RubyInstaller, que vous trouverez ici : http://rubyinstaller.org/downloads/ +
+Mais JRuby est également possible : http://jruby.org/download/ +  
+Vérifiez que votre installation s'est bien déroulée avec un `gem -v` dans une invite de commande.
+
+.Installer AsciiDoctor
+Pour cela, dans un shell, taper la commande :
+
+ gem install asciidoctor
+
+[WARNING]
+====
+Pour ceux sous Windows, il est possible qu'à ce moment vous rencontriez l'erreur :
+
+	ERROR:  While executing gem ... (Encoding::UndefinedConversionError)
+    	U+2019 to CP850 in conversion from UTF-16LE to UTF-8 to CP850
+
+Il s'agit d'un problème d'encodage que vous pouvez résoudre en tapant la commande :  
+
+	chcp 1252
+
+====
+Vous pouvez tester votre installation avec :
+
+	asciidoctor --version
+
+.Installer le backend Deck.js
+La documentation d'installation et de configuration de Deck.js est disponible ici : https://github.com/asciidoctor/asciidoctor-backends[]
+
+Mais pour gagner du temps, voici les différentes étapes:
+
+. Installez les dépendances `tilt`, `haml`, `thread_safe` et `slim`
+
+	gem install tilt haml thread_safe
+	gem install slim --version 2.1.0
+
+. Récupérer le template de présentation `Deck.js` +
+Pour cela, soit vouz clonez le repo :
+
+	git clone git://github.com/asciidoctor/asciidoctor-backends.git
++
+Soit vous récupérer le tout sous forme de zip via GitHub
+. Vous pouvez maintenant créer votre document Asciidoc (*.adoc ou *.ad) +
+Pour un exemple basique de slides, vous pouvez regarder mes slides, ou aller https://github.com/asciidoctor/asciidoctor-backends/blob/master/README.adoc#deckjs-source-examples[ici]
+. Une fois le .adoc créé, générez la version formattée à l'aide de la commande:
+
+	asciidoctor -T "<path>\asciidoctor-backends\haml\deckjs" -D "<output path>" -o "<generated filename>.html" -v "<source .adoc>"
++
+Exemple : 
+
+	asciidoctor -T "E:\dev\repos_Git\asciidoctor-backends\haml\deckjs" -D "E:\dev\asciidoc\generated" -o "Jenkins_Docker_Mesos_Marathon.html" -v "E:\dev\asciidoc\Jenkins_Docker_Mesos_Marathon.adoc"
+
+. Récupérez maintenant la librairie de présentation :
+
+	git clone git://github.com/imakewebthings/deck.js.git
++
+Et copier là à côté du .html précédemment généré.
+. Il ne vous reste plus qu'à ouvrir votre .html pour lancer vos slides !
+
