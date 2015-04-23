@@ -20,6 +20,15 @@ Pour ceux sous Windows, il est possible qu'à ce moment vous rencontriez l'erreu
 Il s'agit d'un problème d'encodage que vous pouvez résoudre en tapant la commande :  
 
 	chcp 1252
+	
+De même, si vous êtes derrière un proxy, déclarez le ainsi:
+
+	set HTTP_PROXY=http://proxyServer:proxyPort
+	set HTTP_PROXY_USER=login
+	set HTTP_PROXY_PASS=password
+	set HTTPS_PROXY=http://proxyServer:proxyPort
+	set HTTPS_PROXY_USER=login
+	set HTTPS_PROXY_PASS=password
 
 ====
 Vous pouvez tester votre installation avec :
