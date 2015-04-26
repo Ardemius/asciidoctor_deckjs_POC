@@ -56,3 +56,4 @@ This module splits a long slide into multiple slides.
 		});
 	})
 })(jQuery, 'deck');
+
