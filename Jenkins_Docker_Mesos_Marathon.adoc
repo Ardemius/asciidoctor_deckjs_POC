@@ -1,6 +1,7 @@
 // We start with some Deck.js options
 // Here we want to add back/next icons to our slides
 :navigation:
+:toc:
 
 // Here we have the title of our slides, and the speaker
 = Un Jenkins amélioré avec Docker, Mesos et Marathon
