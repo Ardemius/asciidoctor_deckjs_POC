@@ -36,35 +36,50 @@ Vous pouvez tester votre installation avec :
 	asciidoctor --version
 
 == Installer le backend Deck.js
-La documentation d'installation et de configuration de Deck.js est disponible ici : https://github.com/asciidoctor/asciidoctor-backends[]
+La documentation d'installation et de configuration de Deck.js est disponible ici : 
+
+* https://github.com/asciidoctor/asciidoctor-backends[]
+* ou ici http://asciidoctor.org/docs/install-and-use-deckjs-backend/[] (je trouve ce lien plus clair)
 
 Mais pour gagner du temps, voici les différentes étapes:
 
-. Installez les dépendances `tilt`, `haml`, `thread_safe` et `slim`
+.	Installez les dépendances `tilt`, `haml`, `thread_safe` et `slim`
 
 	gem install tilt haml thread_safe
 	gem install slim --version 2.1.0
 
-. Récupérer le template de présentation `Deck.js` +
-Pour cela, soit vouz clonez le repo :
+.	Récupérez le *backend Deck.js* pour AsciiDoctor. +
+Pour cela, clonez le repo :
 
-	git clone git://github.com/asciidoctor/asciidoctor-backends.git
+	git clone https://github.com/asciidoctor/asciidoctor-backends.git
 +
-Soit vous récupérer le tout sous forme de zip via GitHub
-. Vous pouvez maintenant créer votre document Asciidoc (*.adoc ou *.ad) +
-Pour un exemple basique de slides, vous pouvez regarder mes slides, ou aller https://github.com/asciidoctor/asciidoctor-backends/blob/master/README.adoc#deckjs-source-examples[ici]
-. Une fois le .adoc créé, générez la version formattée à l'aide de la commande:
+Ou récupérez le tout sous forme de zip via GitHub. +
+Ce repo contient plusieurs backends pour AsciiDoctor, dont Deck.js.
+.	Créez un répertoire pour vos slides (nous l'appellerons _répertoire de travail_ par la suite).
+.	Récupérez le *template de présentation* `Deck.js`.
 
-	asciidoctor -T "<path>\asciidoctor-backends\haml\deckjs" -D "<output path>" -o "<generated filename>.html" -v "<source .adoc>"
+	git clone https://github.com/imakewebthings/deck.js.git
++
+Puis copiez le répertoire `deck.js` dans votre répertoire de travail.
+.	Les *extensions optionnelles* de Deck.js doivent être présentes dans `deck.js/extensions` pour être actives. +
+Par exemple, si vous voulez ajouter une table des matières à vos slides : 
+
+.. récupérez la suite d'extension `deck.ext.js` de barraq via :
+
+	git clone https://github.com/barraq/deck.ext.js.git
++
+..		copier le répertoire `deck.ext.js/extensions/toc` dans le répertoire `deck.js/extensions` de votre répertoire de travail
+..		(et n'oubliez pas d'ajoutez l'attribut `:toc:` dans le document header de votre .adoc (voir `Jenkins_Docker_Mesos_Marathon.adoc`))
+
+. 	Vous pouvez maintenant *créer votre document Asciidoc* (*.adoc ou *.ad) +
+Pour un exemple basique de slides, vous pouvez regarder les slides de ce repo (`Jenkins_Docker_Mesos_Marathon.adoc`), ou aller https://github.com/asciidoctor/asciidoctor-backends/blob/master/README.adoc#deckjs-source-examples[ici]
+. 	Une fois le .adoc créé, générez la version formattée à l'aide de la commande:
+
+	asciidoctor -T "<backend path>\asciidoctor-backends\haml\deckjs" -D "<output path>" -o "<generated filename>.html" -v "<source .adoc>"
 +
 Exemple : 
 
 	asciidoctor -T "E:\dev\repos_Git\asciidoctor-backends\haml\deckjs" -D "E:\dev\asciidoc\generated" -o "Jenkins_Docker_Mesos_Marathon.html" -v "E:\dev\asciidoc\Jenkins_Docker_Mesos_Marathon.adoc"
 
-. Récupérez maintenant la librairie de présentation :
-
-	git clone git://github.com/imakewebthings/deck.js.git
-+
-Et copier là à côté du .html précédemment généré.
-. Il ne vous reste plus qu'à ouvrir votre .html pour lancer vos slides !
+. 	Il ne vous reste plus qu'à ouvrir votre .html pour lancer vos slides !
 
