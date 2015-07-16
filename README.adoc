@@ -1,4 +1,4 @@
-= Installation de Asciidoc et Deck.js
+= Installation de Asciidoctor et Deck.js
 
 == Installer Ruby
 Pour ceux sous windows, le plus simple est d'installer la version 2.1.6 de RubyInstaller, que vous trouverez ici : http://rubyinstaller.org/downloads/ +
